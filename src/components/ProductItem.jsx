@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import "../styles/productItem.css";
 
 const ProductItem = ({
@@ -9,23 +10,24 @@ const ProductItem = ({
   image,
   rating: { rate, count },
 }) => {
+
   return (
     <>
       <div key={id} className="product-item">
-        <h2>{title}</h2>
+        <h2 className="product-title">{title}</h2>
         <div className="product-image">
           <img src={image} />
         </div>
 
-        <span>Descripcion:</span>
-        <p>{description}</p>
+        <span className="bold-text">Descripcion:</span>
+        <p className="product-description">{description}</p>
 
         <div className="product-others">
-          <h3>Categoría: {category}</h3>
-          <h3>Precio: {price}</h3>
+          <p>Categoría: <span className="bold-text">{category}</span></p>
+          <p>Precio: <span className="bold-text">{price}</span></p>
           <div className="product-rate-count">
-            <span>Calificación: {rate}</span>
-            <span>Cantidad: {count}</span>
+            <span>Calificación: <span className="bold-text">{rate}</span></span>
+            <span>Cantidad: <span className="bold-text">{count}</span></span>
           </div>
         </div>
       </div>

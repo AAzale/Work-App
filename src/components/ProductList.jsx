@@ -8,7 +8,7 @@ export const ProductList = () => {
 
   return (
     <>
-      <div>Lista de Productos</div>
+      <h2>Lista de Productos</h2>
       {isLoading ? <h2>Cargando...</h2> : null}
       <div className="product-grip">
         {data.map((product) => {

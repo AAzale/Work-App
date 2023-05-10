@@ -1,9 +1,12 @@
 import { ProductList } from "../components/ProductList";
+import "../styles/homeApp.css"
 
 const HomeApp = () => {
   return (
     <>
-      <div>App Products with Fake Store API</div>
+      <header>
+        <h1>App Products with Fake Store API</h1>
+      </header>
 
       <ProductList />
     </>
