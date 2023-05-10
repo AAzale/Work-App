@@ -1,5 +1,5 @@
 import { ProductList } from "../components/ProductList";
-import "../styles/homeApp.css"
+import "../styles/homeApp.css";
 
 const HomeApp = () => {
   return (
