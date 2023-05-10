@@ -3,7 +3,8 @@ import { ProductList } from "../components/ProductList";
 const HomeApp = () => {
   return (
     <>
-      <div>HomeApp</div>
+      <div>App Products with Fake Store API</div>
+
       <ProductList />
     </>
   );

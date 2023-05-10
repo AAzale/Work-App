@@ -1,0 +1,37 @@
+.product-item {
+    display: flex;
+    flex-direction: column;
+    max-width: 15rem;
+    justify-content: space-between;
+}
+
+.product-image {
+    text-align: center;
+    height: 200px;
+}
+
+img {
+    max-height: 200px;
+    max-width: 200px;
+}
+
+span {
+    font-weight: bold;
+}
+
+.product-rate-count {
+    display: flex;
+    justify-content: space-between;
+}
+
+p {
+    max-width: 15rem;
+    max-height: 10rem;
+}
+
+h2 {
+    width: 15rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
