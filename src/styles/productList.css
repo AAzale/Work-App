@@ -5,3 +5,10 @@
     gap: 1.5rem;
     justify-content: center;
 }
+
+.title-loading {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}

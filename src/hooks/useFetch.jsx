@@ -1,4 +1,3 @@
-import { notification } from "antd";
 import { useEffect, useState } from "react";
 
 const useFetch = (url, initialState) => {
@@ -7,8 +6,8 @@ const useFetch = (url, initialState) => {
   const [onError, setOnError] = useState(false);
 
   useEffect(() => {
-    try {
-      (async () => {
+    (async () => {
+      try {
         setIsLoading(true);
         const info = await fetch(url);
         const parseo = await info.json();
@@ -17,17 +16,10 @@ const useFetch = (url, initialState) => {
           setData(parseo);
           setIsLoading(false);
         }
-      })();
-    } catch (error) {
-      setOnError(true);
-      notification.error({
-        message: "Error",
-        description: "Ocurrio un error al obtener los productos",
-        onClick: () => {
-          console.log("Notificacion Clicked!");
-        },
-      });
-    }
+      } catch (error) {
+        setOnError(true);
+      }
+    })();
 
     return () => {};
   }, [url]);
