@@ -19,8 +19,6 @@ const HomeApp = () => {
     setSearchProduct(product);
   };
 
-  console.log("Limit: ", limitNumber);
-
   return (
     <>
       <header>

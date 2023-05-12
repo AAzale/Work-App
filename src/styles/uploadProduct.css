@@ -1,21 +1,32 @@
-.new-product-form {
-    padding: 50px;
-    background-color: rgb(255, 255, 255);
-}
-
-#control-hooks {
-    width: 100%;
-}
-
 .product-frame {
-    width: 100%;
-    height: 100%;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
 }
 
 .add-product {
-    text-align: center;
     padding: 10px;
     background-color: rgb(253, 32, 65);
     color: white;
+}
+
+.new-product-form {
+    align-self: center;
+    margin: 30px;
+    width: 70%;
+}
+
+.btn-area {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.input-descripcion {
+    height: 200px;
+}
+
+.bt-red-color {
+    background-color: rgb(253, 32, 65);
 }

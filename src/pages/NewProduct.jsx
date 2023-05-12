@@ -11,18 +11,18 @@ export const NewProduct = () => {
   const [onError, setOnError] = useState(false);
 
   const { Option } = Select;
+  const { TextArea } = Input;
   const layout = {
     labelCol: {
-      span: 6,
+      span: 5,
     },
     wrapperCol: {
-      span: 20,
+      span: 15,
     },
   };
   const tailLayout = {
     wrapperCol: {
-      offset: 6,
-      span: 16,
+      offset: 0,
     },
   };
 
@@ -42,10 +42,16 @@ export const NewProduct = () => {
         }),
       });
       const parseo = await info.json();
+      console.log("New product API: ", parseo);
+      console.log("New product: ", values);
 
       if (parseo.length > 0) {
         setDataNewProduct(parseo);
+
         setIsLoading(false);
+        {
+          onReset();
+        }
       }
     } catch (error) {
       setOnError(true);
@@ -60,7 +66,7 @@ export const NewProduct = () => {
     <>
       <div className="product-frame">
         <header>
-          <h2 className="add-product">Agregar Producto</h2>
+          <h1 className="add-product">Agregar Producto</h1>
         </header>
 
         <div className="new-product-form">
@@ -69,9 +75,6 @@ export const NewProduct = () => {
             form={form}
             name="control-hooks"
             onFinish={onFinish}
-            style={{
-              maxWidth: 600,
-            }}
           >
             <Form.Item
               name="nombre"
@@ -94,7 +97,7 @@ export const NewProduct = () => {
                 },
               ]}
             >
-              <Input />
+              <TextArea rows={4} />
             </Form.Item>
 
             <Form.Item
@@ -122,7 +125,7 @@ export const NewProduct = () => {
                 {data.map((categories) => {
                   return (
                     <Option key={categories} value={categories}>
-                      {categories}
+                      {categories.charAt(0).toUpperCase() + categories.slice(1)}
                     </Option>
                   );
                 })}
@@ -142,13 +145,23 @@ export const NewProduct = () => {
             </Form.Item>
 
             <Form.Item {...tailLayout}>
-              <Button type="primary" htmlType="submit" href="/">
-                Completar
-              </Button>
+              <div className="btn-area">
+                <Button
+                  className="bt-red-color"
+                  type="primary"
+                  htmlType="submit"
+                >
+                  Completar
+                </Button>
 
-              <Button htmlType="button" onClick={onReset}>
-                Resetear
-              </Button>
+                <Button htmlType="button" onClick={onReset}>
+                  Resetear
+                </Button>
+
+                <Button className="bt-red-color" type="primary" href="/">
+                  Home
+                </Button>
+              </div>
             </Form.Item>
           </Form>
         </div>
