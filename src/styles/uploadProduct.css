@@ -1,0 +1,21 @@
+.new-product-form {
+    padding: 50px;
+    background-color: rgb(255, 255, 255);
+}
+
+#control-hooks {
+    width: 100%;
+}
+
+.product-frame {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+}
+
+.add-product {
+    text-align: center;
+    padding: 10px;
+    background-color: rgb(253, 32, 65);
+    color: white;
+}

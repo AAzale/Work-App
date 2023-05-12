@@ -3,6 +3,8 @@ import { ProductList } from "../components/ProductList";
 import "../styles/homeApp.css";
 import { InputNumber } from "antd";
 import { Input } from "antd";
+import { Button } from "antd";
+import { Link } from "react-router-dom";
 
 const HomeApp = () => {
   const [limitNumber, setLimitNumber] = useState(20);
@@ -42,6 +44,15 @@ const HomeApp = () => {
             size="large"
             onSearch={onSearch}
           />
+        </div>
+
+        <div className="button-products">
+          <Button type="primary" size="large">
+            <Link to={"/src/pages/NewProduct.jsx"}>Añadir Producto</Link>
+          </Button>
+          {/*<Button type="primary" size="large">
+            Actulizar Producto
+          </Button>*/}
         </div>
       </div>
 

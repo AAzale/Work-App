@@ -5,6 +5,7 @@
     border: 1px ridge rgb(255, 118, 138);
     border-radius: 10px;
     box-shadow: 0px 4px 8px 1px rgb(253, 155, 170);
+    color:  rgb(116, 0, 17);
 }
 
 .product-title {
@@ -15,7 +16,7 @@
 
     height: 50px;
     margin-top: 0;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     text-align: center;
 }
 
@@ -49,9 +50,15 @@ img {
     margin-top: 5px;
 }
 
+.product-category {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .product-rate-count {
     display: flex;
     justify-content: space-between;
+    margin-top: 5px;
 }
 
 .bold-text {

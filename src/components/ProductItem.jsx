@@ -25,8 +25,8 @@ const ProductItem = ({
         <span className="bold-text">Descripcion:</span>
         <p className="product-description">{description}</p>
 
-        <div className="product-others">
-          <p>
+        <div>
+          <p className="product-category">
             Categoría: <span className="bold-text">{category}</span>
           </p>
           <p>

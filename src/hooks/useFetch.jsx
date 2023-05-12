@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useFetch = (url, initialState) => {
+const useFetch = (url, body) => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
   const [onError, setOnError] = useState(false);
@@ -9,7 +9,7 @@ const useFetch = (url, initialState) => {
     (async () => {
       try {
         setIsLoading(true);
-        const info = await fetch(url);
+        const info = await fetch(url, body);
         const parseo = await info.json();
 
         if (parseo.length > 0) {
