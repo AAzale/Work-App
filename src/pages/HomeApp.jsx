@@ -19,6 +19,8 @@ const HomeApp = () => {
     setSearchProduct(product);
   };
 
+  console.log("Limit: ", limitNumber);
+
   return (
     <>
       <header>
@@ -50,9 +52,9 @@ const HomeApp = () => {
           <Button type="primary" size="large">
             <Link to={"/src/pages/NewProduct.jsx"}>Añadir Producto</Link>
           </Button>
-          {/*<Button type="primary" size="large">
+          <Button type="primary" size="large">
             Actulizar Producto
-          </Button>*/}
+          </Button>
         </div>
       </div>
 
