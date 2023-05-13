@@ -41,17 +41,14 @@ export const NewProduct = () => {
           category: values.categoria,
         }),
       });
+
       const parseo = await info.json();
-      console.log("New product API: ", parseo);
-      console.log("New product: ", values);
+      setTimeout(() => {}, 10000);
 
       if (parseo.length > 0) {
         setDataNewProduct(parseo);
-
         setIsLoading(false);
-        {
-          onReset();
-        }
+        form.resetFields();
       }
     } catch (error) {
       setOnError(true);
@@ -161,6 +158,18 @@ export const NewProduct = () => {
                 <Button className="bt-red-color" type="primary" href="/">
                   Home
                 </Button>
+
+                {isLoading ? (
+                  <Button className="bt-red-color" type="primary">
+                    Cargando
+                  </Button>
+                ) : null}
+
+                {onError ? (
+                  <Button className="bt-red-color" type="primary">
+                    Error al Cargar
+                  </Button>
+                ) : null}
               </div>
             </Form.Item>
           </Form>
