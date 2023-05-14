@@ -7,7 +7,6 @@ import { useState } from "react";
 export const NewProduct = () => {
   const { data } = useFetch(`${URL_API}/products/categories`);
   const [isLoading, setIsLoading] = useState(false);
-  const [dataNewProduct, setDataNewProduct] = useState([]);
   const [onError, setOnError] = useState(false);
 
   const { Option } = Select;
@@ -29,8 +28,8 @@ export const NewProduct = () => {
   const [form] = Form.useForm();
 
   const onFinish = async (values) => {
+    setIsLoading(true);
     try {
-      setIsLoading(true);
       const info = await fetch(`${URL_API}/products`, {
         method: "POST",
         body: JSON.stringify({
@@ -43,11 +42,9 @@ export const NewProduct = () => {
       });
 
       const parseo = await info.json();
-      setTimeout(() => {}, 10000);
 
-      if (parseo.length > 0) {
-        setDataNewProduct(parseo);
-        setIsLoading(false);
+      if (parseo != null) {
+        setTimeout(setIsLoading(false), 8.0 * 1000);
         form.resetFields();
       }
     } catch (error) {
@@ -160,13 +157,13 @@ export const NewProduct = () => {
                 </Button>
 
                 {isLoading ? (
-                  <Button className="bt-red-color" type="primary">
+                  <Button className="bt-red-color" type="primary" loading>
                     Cargando
                   </Button>
                 ) : null}
 
                 {onError ? (
-                  <Button className="bt-red-color" type="primary">
+                  <Button className="bt-red-color" type="dashed" danger>
                     Error al Cargar
                   </Button>
                 ) : null}
