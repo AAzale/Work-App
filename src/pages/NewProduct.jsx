@@ -1,10 +1,11 @@
 import { Button, Form, Input, Select } from "antd";
+import { HomeOutlined } from "@ant-design/icons";
 import useFetch from "../hooks/useFetch";
 import { URL_API } from "../utils/constants";
 import "../styles/uploadProduct.css";
 import { useState } from "react";
 
-export const NewProduct = () => {
+const NewProduct = () => {
   const { data } = useFetch(`${URL_API}/products/categories`);
   const [isLoading, setIsLoading] = useState(false);
   const [onError, setOnError] = useState(false);
@@ -152,9 +153,13 @@ export const NewProduct = () => {
                   Resetear
                 </Button>
 
-                <Button className="bt-red-color" type="primary" href="/">
-                  Home
-                </Button>
+                <Button
+                  className="bt-red-color"
+                  type="primary"
+                  shape="circle"
+                  icon={<HomeOutlined />}
+                  href="/"
+                ></Button>
 
                 {isLoading ? (
                   <Button className="bt-red-color" type="primary" loading>
@@ -175,3 +180,5 @@ export const NewProduct = () => {
     </>
   );
 };
+
+export default NewProduct;

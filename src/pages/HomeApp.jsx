@@ -48,7 +48,7 @@ const HomeApp = () => {
 
         <div className="button-products">
           <Button type="primary" size="large">
-            <Link to={"/src/pages/NewProduct.jsx"}>Añadir Producto</Link>
+            <Link to={"NewProduct"}>Añadir Producto</Link>
           </Button>
           <Button type="primary" size="large">
             Actulizar Producto
