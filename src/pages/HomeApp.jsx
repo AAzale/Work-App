@@ -50,9 +50,6 @@ const HomeApp = () => {
           <Button type="primary" size="large">
             <Link to={"NewProduct"}>Añadir Producto</Link>
           </Button>
-          <Button type="primary" size="large">
-            Actulizar Producto
-          </Button>
         </div>
       </div>
 
