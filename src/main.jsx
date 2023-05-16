@@ -19,10 +19,12 @@ const router = createBrowserRouter([
   {
     path: "NewProduct",
     element: <NewProduct />,
+    errorElement: <ErrorPage />,
   },
   {
-    path: "PageProduct",
+    path: "PageProduct/:productID",
     element: <PageProduct />,
+    errorElement: <ErrorPage />,
   },
 ]);
 
