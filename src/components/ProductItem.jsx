@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { Rate } from "antd";
+import { Link } from "react-router-dom";
 import "../styles/productItem.css";
 
 const ProductItem = ({
@@ -17,7 +18,9 @@ const ProductItem = ({
   return (
     <>
       <div key={id} className="product-card">
-        <h3 className="product-title">{title}</h3>
+        <h3 className="product-title">
+          <Link to={`PageProduct/${id}`}>{title}</Link>
+        </h3>
         <div className="product-image">
           <img src={image} />
         </div>
@@ -33,11 +36,13 @@ const ProductItem = ({
             Precio: <span className="bold-text">{truncPrice()}</span>
           </p>
           <div className="product-rate-count">
-            <span>
-              Calificación: <span className="bold-text">{rate}</span>
+            <span className="product-rate-count-column">
+              <span className="bold-text">
+                <Rate disabled defaultValue={rate} />
+              </span>
             </span>
-            <span>
-              Cantidad: <span className="bold-text">{count}</span>
+            <span className="product-rate-count-column">
+              Cantidad<span className="bold-text">{count}</span>
             </span>
           </div>
         </div>

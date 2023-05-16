@@ -1,9 +1,9 @@
-import useFetch from "../hooks/useFetch";
 import { URL_API } from "../utils/constants";
+import useFetch from "../hooks/useFetch";
 import ProductItem from "./ProductItem";
-import "../styles/productList.css";
 import popError from "../utils/popError";
 import { Button } from "antd";
+import "../styles/productList.css";
 
 export const ProductList = ({ limit, searchProduct }) => {
   const { data, isLoading, onError } = useFetch(
