@@ -2,10 +2,10 @@
     max-width: 15rem;
     background-color: rgb(255, 236, 239);
     padding: 10px;
-    border: 1px ridge rgb(255, 118, 138);
+    border: 1px ridge rgb(253, 32, 65);
     border-radius: 10px;
     box-shadow: 0px 2px 6px 1px rgb(253, 155, 170);
-    color:  rgb(116, 0, 17);
+    color:  rgb(80, 35, 35);
 }
 
 .product-title {
@@ -20,6 +20,11 @@
     text-align: center;
 }
 
+.product-title > a {
+    text-decoration: none;
+    color: rgb(80, 35, 35);
+}
+
 .product-image {
     display: flex;
     align-items: center;
@@ -32,7 +37,7 @@
     height: 210px
 }
 
-img {
+.product-image > img {
     max-height: 200px;
     max-width: 200px;
     border-radius: 5px;
@@ -44,9 +49,8 @@ img {
     -webkit-line-clamp: 8;
     line-clamp: 8;
     overflow: hidden;
-    min-height: 10rem;
+    min-height: 10.5rem;
     text-align: justify;
-    text-transform: capitalize;
     margin-top: 5px;
 }
 
@@ -64,4 +68,15 @@ img {
 .bold-text {
     font-weight: bold;
     text-transform: capitalize;
+}
+
+.product-rate-count-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ant-rate {
+    color: gold;
 }

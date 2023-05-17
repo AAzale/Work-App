@@ -3,7 +3,7 @@
     margin: 0;
 }
 
-h1 {
+header > h1 {
     text-align: center;
     padding: 30px;
     background-color: rgb(253, 32, 65);
@@ -16,7 +16,7 @@ h1 {
     align-items: center;
     padding: 20px;
     background-color: rgb(255, 236, 239);
-    color:  rgb(148, 0, 22);
+    color:  rgb(80, 35, 35);
 }
 
 .limit-products {

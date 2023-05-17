@@ -53,24 +53,26 @@ const PageProduct = () => {
               Descripción: <span className="">{data.description}</span>
             </span>
 
-            <div>
+            <div className="pg-product-stats-box">
               <div className="pg-product-stats">
-                <div className="pg-product-price">
-                  Precio: <span className="">{truncPrice()}</span>
+                <div className="pg-product-price pg-flex-col">
+                  Precio<span className="">{truncPrice()} $</span>
                 </div>
-                <div className="pg-product-cat">
-                  Categoría: <span className="">{data.category}</span>
+                <div className="pg-product-rate">
+                  <span className="pg-flex-col">
+                    Rate
+                    <Rate disabled defaultValue={dataRating.rate} />
+                  </span>
                 </div>
               </div>
 
               <div className="pg-product-stats">
-                <span className="">
-                  <span className="pg-product-rate">
-                    <Rate disabled defaultValue={dataRating.rate} />
-                  </span>
-                </span>
-                <span className="">
-                  Cantidad: <span className="">{dataRating.count}</span>
+                <div className="pg-product-cat pg-flex-col">
+                  Categoría<span className="">{data.category}</span>
+                </div>
+
+                <span className="pg-product-count pg-flex-col">
+                  Cantidad<span className="">{dataRating.count}</span>
                 </span>
               </div>
             </div>

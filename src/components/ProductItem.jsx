@@ -33,7 +33,7 @@ const ProductItem = ({
             Categoría: <span className="bold-text">{category}</span>
           </p>
           <p>
-            Precio: <span className="bold-text">{truncPrice()}</span>
+            Precio: <span className="bold-text">{truncPrice()} $</span>
           </p>
           <div className="product-rate-count">
             <span className="product-rate-count-column">
