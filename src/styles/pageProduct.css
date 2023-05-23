@@ -3,7 +3,6 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    align-content: center;
     color: rgb(80, 35, 35);
 }
 
@@ -20,15 +19,13 @@
     justify-content: center;
     background-color: rgb(255, 236, 239);
     border-radius: 20px 0px 20px 0px;
-    border: 2px ridge rgb(253, 32, 65);
     box-shadow: 0px 0px 6px 2px rgb(253, 155, 170);
+    overflow: hidden;
 }
 
 .pg-product-title {
     padding: 20px;
-    font-weight: bolder;
-    text-align: justify;
-    align-self: center;
+    margin-bottom: 20px;
 }
 
 .pg-product-img {
@@ -107,4 +104,69 @@
 .pg-product-rate {
     font-size: larger;
     font-weight: bold;
+}
+
+.up-product-box {
+    border: 1px solid rgb(253, 32, 65);
+}
+
+.up-product-form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px 20px 30px;
+    gap: 1rem;
+}
+
+.up-item-form {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: start;
+    gap: 0.5rem;
+}
+
+.up-label-form {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 23%;
+}
+
+.div-input {
+    display: flex;
+    width: 52%;
+}
+
+.up-input-form {
+    position: relative;
+    display: inline-block;
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 4px 11px;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.6;
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.up-input-form:focus {
+    outline: none;
+    border: 1px solid rgb(255, 42, 74);
+    box-shadow: 0px 0px 2px 2px rgb(253, 155, 170);
+}
+
+div > textarea {
+    min-height: 6rem;
+}
+
+.up-input-option {
+    border-radius: 6px;
+}
+
+.up-product-navbtt {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
 }

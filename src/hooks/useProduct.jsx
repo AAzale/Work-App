@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const useProduct = (url) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState([]);
+  const [dataProduct, setData] = useState([]);
   const [dataRating, setDataRating] = useState([]);
   const [onError, setOnError] = useState(false);
 
@@ -26,7 +26,7 @@ const useProduct = (url) => {
     return () => {};
   }, [url]);
 
-  return { data, dataRating, isLoading, onError };
+  return { dataProduct, dataRating, isLoading, onError };
 };
 
 export default useProduct;
