@@ -133,7 +133,7 @@
 
 .div-input {
     display: flex;
-    width: 52%;
+    width: 55%;
 }
 
 .up-input-form {
@@ -160,13 +160,10 @@ div > textarea {
     min-height: 6rem;
 }
 
-.up-input-option {
-    border-radius: 6px;
-}
-
 .up-product-navbtt {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 3rem;
     align-items: center;
 }

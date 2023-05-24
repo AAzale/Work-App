@@ -1,7 +1,7 @@
 import { URL_API } from "../utils/constants";
 import { useParams } from "react-router-dom";
 import { Rate, Button } from "antd";
-import { HomeOutlined } from "@ant-design/icons";
+import { HomeOutlined, DeleteOutlined } from "@ant-design/icons";
 import useProduct from "../hooks/useProduct";
 import popError from "../utils/popError";
 import "../styles/pageProduct.css";
@@ -16,6 +16,10 @@ const PageProduct = () => {
   );
 
   const [isEditing, setIsEditing] = useState(false);
+  const [onErrorUpload, setOnErrorUpload] = useState(false);
+  const [isLoadingUpload, setIsLoadingUpload] = useState(false);
+  const [onErrorDelete, setOnErrorDelete] = useState(false);
+  const [isLoadingDelete, setIsLoadingDelete] = useState(false);
 
   function truncPrice() {
     return Math.fround(
@@ -27,9 +31,54 @@ const PageProduct = () => {
     setIsEditing(!isEditing);
   }
 
+  const onFinish = async (value) => {
+    setIsLoadingUpload(true);
+
+    const form = value.target;
+    const formData = new FormData(form);
+    const formJson = Object.fromEntries(formData.entries());
+
+    try {
+      const info = await fetch(`${URL_API}/products/${dataProduct.id}`, {
+        method: "PUT",
+        body: JSON.stringify({
+          title: formJson.productTitle,
+          price: formJson.productPrice,
+          description: formJson.productDescription,
+          image: formJson.productImage,
+          category: formJson.productCat,
+        }),
+      });
+
+      const parseo = await info.json();
+      if (parseo != null) {
+        setTimeout(setIsLoadingUpload(false), 8.0 * 1000);
+      }
+    } catch (error) {
+      setOnErrorUpload(true);
+    }
+  };
+
+  const deleteProduct = async () => {
+    setIsLoadingDelete(true);
+    try {
+      const info = await fetch(`${URL_API}/products/${dataProduct.id}`, {
+        method: "DELETE",
+      });
+
+      const parseo = await info.json();
+      if (parseo != null) {
+        setTimeout(setIsLoadingDelete(false), 8.0 * 1000);
+        console.log("DELETE DATA: ", parseo);
+      }
+    } catch (error) {
+      setOnErrorDelete(true);
+    }
+  };
+
   return (
     <>
-      {onError ? popError() : null}
+      {onError || onErrorUpload || onErrorDelete ? popError() : null}
       <div className="page-product">
         <div className="pg-product-navbtt">
           <Button
@@ -40,7 +89,7 @@ const PageProduct = () => {
             href="/"
           ></Button>
 
-          {isLoading ? (
+          {isLoading || isLoadingUpload || isLoadingDelete ? (
             <Button className="bt-red-color" type="primary" loading>
               Cargando...
             </Button>
@@ -56,8 +105,8 @@ const PageProduct = () => {
           </Button>
         </div>
 
-        {isLoading ? null : (
-          <div key={data.id} className="pg-product-box">
+        {isLoading || isEditing ? null : (
+          <div key={dataProduct.id} className="pg-product-box">
             <header>
               <h1 className="pg-product-title">{dataProduct.title}</h1>
             </header>
@@ -102,17 +151,21 @@ const PageProduct = () => {
               <h1>Actualizar Producto</h1>
             </header>
 
-            <form key={dataProduct.id} className="up-product-form">
+            <form
+              key={dataProduct.id}
+              className="up-product-form"
+              onSubmit={onFinish}
+            >
               <div className="up-item-form">
-                <label className="up-label-form" htmlFor="product-title">
+                <label className="up-label-form" htmlFor="productTitle">
                   Nombre:
                 </label>
                 <div className="div-input">
                   <input
                     className="up-input-form"
                     type="text"
-                    id="product-title"
-                    name="product-title"
+                    id="productTitle"
+                    name="productTitle"
                     defaultValue={dataProduct.title}
                     required
                   />
@@ -120,15 +173,15 @@ const PageProduct = () => {
               </div>
 
               <div className="up-item-form">
-                <label className="up-label-form" htmlFor="product-description">
+                <label className="up-label-form" htmlFor="productDescription">
                   Descripción:
                 </label>
                 <div className="div-input">
                   <textarea
                     className="up-input-form"
                     type="text"
-                    id="product-description"
-                    name="product-description"
+                    id="productDescription"
+                    name="productDescription"
                     defaultValue={dataProduct.description}
                     required
                   />
@@ -136,15 +189,15 @@ const PageProduct = () => {
               </div>
 
               <div className="up-item-form">
-                <label className="up-label-form" htmlFor="product-price">
+                <label className="up-label-form" htmlFor="productPrice">
                   Precio:
                 </label>
                 <div className="div-input">
                   <input
                     className="up-input-form"
                     type="number"
-                    id="product-price"
-                    name="product-price"
+                    id="productPrice"
+                    name="productPrice"
                     defaultValue={truncPrice()}
                     required
                   />
@@ -152,24 +205,20 @@ const PageProduct = () => {
               </div>
 
               <div className="up-item-form">
-                <label className="up-label-form" htmlFor="product-cat">
+                <label className="up-label-form" htmlFor="productCat">
                   Categoría:
                 </label>
                 <div className="div-input">
                   <select
                     className="up-input-form"
-                    id="product-cat"
-                    name="product-cat"
+                    id="productCat"
+                    name="productCat"
                     defaultValue={dataProduct.category}
                     required
                   >
                     {data.map((categories) => {
                       return (
-                        <option
-                          className="up-input-option"
-                          key={categories}
-                          value={categories}
-                        >
+                        <option key={categories} value={categories}>
                           {categories.charAt(0).toUpperCase() +
                             categories.slice(1)}
                         </option>
@@ -180,15 +229,15 @@ const PageProduct = () => {
               </div>
 
               <div className="up-item-form">
-                <label className="up-label-form" htmlFor="product-image">
+                <label className="up-label-form" htmlFor="productImage">
                   URL Imagen:
                 </label>
                 <div className="div-input">
                   <input
                     className="up-input-form"
                     type="text"
-                    id="product-image"
-                    name="product-image"
+                    id="productImage"
+                    name="productImage"
                     defaultValue={dataProduct.image}
                     required
                   />
@@ -196,8 +245,24 @@ const PageProduct = () => {
               </div>
 
               <div className="up-product-navbtt">
-                <button type="reset">Reiniciar formulario</button>
-                <button type="submit">Enviar formulario</button>
+                <Button
+                  className="bt-red-color"
+                  type="primary"
+                  htmlType="submit"
+                >
+                  Completar
+                </Button>
+
+                <Button htmlType="reset">Resetear</Button>
+
+                <Button
+                  className="bt-red-color"
+                  type="primary"
+                  shape="circle"
+                  icon={<DeleteOutlined />}
+                  href="/"
+                  onClick={deleteProduct}
+                ></Button>
               </div>
             </form>
           </div>
