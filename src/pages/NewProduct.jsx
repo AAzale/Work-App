@@ -1,9 +1,9 @@
+import { useState } from "react";
 import { Button, Form, Input, Select } from "antd";
 import { HomeOutlined } from "@ant-design/icons";
-import useFetch from "../hooks/useFetch";
 import { URL_API } from "../utils/constants";
+import useFetch from "../hooks/useFetch";
 import "../styles/uploadProduct.css";
-import { useState } from "react";
 
 const NewProduct = () => {
   const { data } = useFetch(`${URL_API}/products/categories`);

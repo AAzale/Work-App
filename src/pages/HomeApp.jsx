@@ -1,10 +1,8 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { InputNumber, Input, Button } from "antd";
 import { ProductList } from "../components/ProductList";
 import "../styles/homeApp.css";
-import { InputNumber } from "antd";
-import { Input } from "antd";
-import { Button } from "antd";
-import { Link } from "react-router-dom";
 
 const HomeApp = () => {
   const [limitNumber, setLimitNumber] = useState(20);

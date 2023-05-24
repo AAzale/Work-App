@@ -1,12 +1,12 @@
+import { useState } from "react";
 import { URL_API } from "../utils/constants";
 import { useParams } from "react-router-dom";
 import { Rate, Button } from "antd";
 import { HomeOutlined, DeleteOutlined } from "@ant-design/icons";
-import useProduct from "../hooks/useProduct";
 import popError from "../utils/popError";
-import "../styles/pageProduct.css";
-import { useState } from "react";
+import useProduct from "../hooks/useProduct";
 import useFetch from "../hooks/useFetch";
+import "../styles/pageProduct.css";
 
 const PageProduct = () => {
   const { productID } = useParams();
@@ -16,10 +16,10 @@ const PageProduct = () => {
   );
 
   const [isEditing, setIsEditing] = useState(false);
-  const [onErrorUpload, setOnErrorUpload] = useState(false);
-  const [isLoadingUpload, setIsLoadingUpload] = useState(false);
-  const [onErrorDelete, setOnErrorDelete] = useState(false);
+  const [isLoadingUpdate, setIsLoadingUpdate] = useState(false);
+  const [onErrorUpdate, setOnErrorUpdate] = useState(false);
   const [isLoadingDelete, setIsLoadingDelete] = useState(false);
+  const [onErrorDelete, setOnErrorDelete] = useState(false);
 
   function truncPrice() {
     return Math.fround(
@@ -31,8 +31,8 @@ const PageProduct = () => {
     setIsEditing(!isEditing);
   }
 
-  const onFinish = async (value) => {
-    setIsLoadingUpload(true);
+  const onFinishUpdate = async (value) => {
+    setIsLoadingUpdate(true);
 
     const form = value.target;
     const formData = new FormData(form);
@@ -52,10 +52,10 @@ const PageProduct = () => {
 
       const parseo = await info.json();
       if (parseo != null) {
-        setTimeout(setIsLoadingUpload(false), 8.0 * 1000);
+        setTimeout(setIsLoadingUpdate(false), 8.0 * 1000);
       }
     } catch (error) {
-      setOnErrorUpload(true);
+      setOnErrorUpdate(true);
     }
   };
 
@@ -69,7 +69,6 @@ const PageProduct = () => {
       const parseo = await info.json();
       if (parseo != null) {
         setTimeout(setIsLoadingDelete(false), 8.0 * 1000);
-        console.log("DELETE DATA: ", parseo);
       }
     } catch (error) {
       setOnErrorDelete(true);
@@ -78,7 +77,7 @@ const PageProduct = () => {
 
   return (
     <>
-      {onError || onErrorUpload || onErrorDelete ? popError() : null}
+      {onError || onErrorUpdate || onErrorDelete ? popError() : null}
       <div className="page-product">
         <div className="pg-product-navbtt">
           <Button
@@ -89,7 +88,7 @@ const PageProduct = () => {
             href="/"
           ></Button>
 
-          {isLoading || isLoadingUpload || isLoadingDelete ? (
+          {isLoading || isLoadingUpdate || isLoadingDelete ? (
             <Button className="bt-red-color" type="primary" loading>
               Cargando...
             </Button>
@@ -154,7 +153,7 @@ const PageProduct = () => {
             <form
               key={dataProduct.id}
               className="up-product-form"
-              onSubmit={onFinish}
+              onSubmit={onFinishUpdate}
             >
               <div className="up-item-form">
                 <label className="up-label-form" htmlFor="productTitle">
